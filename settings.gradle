@@ -1,0 +1,2 @@
+rootProject.name = 'JavaPft'
+include('app')

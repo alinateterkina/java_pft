@@ -1,0 +1,12 @@
+*.iml
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+*.jar
+!gradle-wrapper.jar
+
+build/
+out/
+.gradle/
+.idea/

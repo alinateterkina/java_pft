@@ -1,0 +1,36 @@
+plugins {
+    id 'application'
+}
+
+group 'ru.alinateterkina'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+}
+
+application {
+    mainClass = 'ru.alinateterkina.javapft.Main'
+}
+
+test {
+    useJUnit()
+}
+
+jar {
+    baseName project.name
+    manifest {
+        attributes 'Main-Class': 'ru.alinateterkina.javapft.Main'
+    }
+}
+
+task copyJar(type: Copy) {
+    from jar
+    into project.rootDir
+}
+
+jar.finalizedBy copyJar
