@@ -1,4 +1,4 @@
-package ru.alinateterkina.javapft;
+package ru.stqa.pft.sandbox;
 
 import org.junit.Test;
 

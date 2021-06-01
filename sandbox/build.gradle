@@ -2,7 +2,7 @@ plugins {
     id 'application'
 }
 
-group 'ru.alinateterkina'
+group 'ru.stqa.pft.sandbox'
 version '1.0'
 
 repositories {
@@ -14,7 +14,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'ru.alinateterkina.javapft.Main'
+    mainClass = 'ru.stqa.pft.sandbox.MyFirstProgram'
 }
 
 test {
@@ -24,7 +24,7 @@ test {
 jar {
     baseName project.name
     manifest {
-        attributes 'Main-Class': 'ru.alinateterkina.javapft.Main'
+        attributes 'Main-Class': 'ru.stqa.pft.sandbox.MyFirstProgram'
     }
 }
 
