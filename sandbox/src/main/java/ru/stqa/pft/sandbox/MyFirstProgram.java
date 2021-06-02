@@ -1,12 +1,13 @@
 package ru.stqa.pft.sandbox;
 
 public class MyFirstProgram {
-    public static void main(String[] args) {
-        hello("world");
-        hello("Alexey");
 
-        double l = 8.0;
-        System.out.println("Площадь квадрата со стороной "+l+" = "+area(l));
+    public static void main(String[] args) {
+        new MyFirstProgram().main();
+    }
+
+    private void main() {
+        task2();
 
         double a = 4;
         double b = 6;
@@ -14,7 +15,15 @@ public class MyFirstProgram {
 
     }
 
-    public static void hello(String somebody) {
+    private void task2() {
+        Point p1 = new Point(1, 2);
+        Point p2 = new Point(1,3);
+        double distanceStatic = Point.distance(p1, p2);
+        double distanceObject = p1.distanceTo(p2);
+        System.out.println(distanceObject);
+    }
+
+    public void hello(String somebody) {
         System.out.println("Hello,"+somebody+"!");
 
     }
