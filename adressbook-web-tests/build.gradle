@@ -1,12 +1,20 @@
 apply plugin: 'java'
 
+if (project.rootProject.file('webdrivers.properties').exists()) {
+    Properties webDriverProperties = new Properties()
+    webDriverProperties.load(project.rootProject.file('webdrivers.properties').newDataInputStream())
+    webDriverProperties.each { key, value ->
+        test.systemProperty key, value
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testImplementation 'org.testng:testng:7.4.0'
-    testRuntimeOnly 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-4'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-4'
 }
 
 test {
