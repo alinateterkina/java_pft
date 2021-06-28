@@ -1,19 +1,20 @@
-package ru.stqa.pft.addressboook;
+package ru.stqa.pft.addressbook;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class GroupCreationTests {
-    private WebDriver wd;
 
+    private WebDriver wd;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
-        wd = new FirefoxDriver();
+        WebDriverUtils.setupWebDriverProperties();
+        wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
         login("admin", "secret");
@@ -63,7 +64,9 @@ public class GroupCreationTests {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
-        wd.quit();
+        if (wd != null) {
+            wd.quit();
+        }
     }
 
     private boolean isElementPresent(By by) {
@@ -83,7 +86,5 @@ public class GroupCreationTests {
             return false;
         }
     }
-
-
 }
 

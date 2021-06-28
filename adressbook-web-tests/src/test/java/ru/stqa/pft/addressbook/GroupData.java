@@ -1,6 +1,7 @@
-package ru.stqa.pft.addressboook;
+package ru.stqa.pft.addressbook;
 
 public class GroupData {
+
     private final String name;
     private final String header;
     private final String footer;
