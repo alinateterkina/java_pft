@@ -3,6 +3,9 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 public class ContactHelper extends HelperBase {
 
     public ContactHelper(WebDriver wd) {
@@ -34,11 +37,17 @@ public class ContactHelper extends HelperBase {
     }
 
     public void deleteSelectedContacts() {
-        wd.findElement(By.xpath("xpath=//input[@value='Delete']"));
+        WebElement deleteButton = wd.findElements(By.tagName("input")).stream().filter(new Predicate<WebElement>() {
+            @Override
+            public boolean test(WebElement webElement) {
+                return webElement.getAttribute("value").equals("Delete");
+            }
+        }).collect(Collectors.toList()).get(0);
+        deleteButton.click();
     }
 
     public void editFirstContact() {
-        WebElement editCell = wd.findElement(By.xpath("xpath=//img[@alt='Edit']"));
+        WebElement editCell = wd.findElement(By.id("maintable")).findElements(By.tagName("tr")).get(1).findElements(By.tagName("td")).get(7).findElements(By.tagName("img")).get(0);
         editCell.click();
     }
 }
