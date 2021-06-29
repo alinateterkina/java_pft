@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
 import org.openqa.selenium.*;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.WebDriverUtils;
 
 public class ContactCreationTests {
 
@@ -66,11 +68,11 @@ public class ContactCreationTests {
     wd.findElement(By.name("email3")).clear();
     wd.findElement(By.name("email3")).sendKeys(contactData.getEmail3());
   }
+
   @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {
     if (wd != null) {
       wd.quit();
     }
   }
-
 }
