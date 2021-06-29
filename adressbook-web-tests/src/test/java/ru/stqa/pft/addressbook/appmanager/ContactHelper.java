@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -28,5 +27,18 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getEmail());
         type(By.name("email2"), contactData.getEmail2());
         type(By.name("email3"), contactData.getEmail3());
+    }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+    public void deleteSelectedContacts() {
+        wd.findElement(By.xpath("xpath=//input[@value='Delete']"));
+    }
+
+    public void editFirstContact() {
+        WebElement editCell = wd.findElement(By.xpath("xpath=//img[@alt='Edit']"));
+        editCell.click();
     }
 }
