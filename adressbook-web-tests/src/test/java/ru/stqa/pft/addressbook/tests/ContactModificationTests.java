@@ -9,7 +9,7 @@ public class ContactModificationTests extends TestBase {
     public void testContactModificationTests() throws Exception {
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().editFirstContact();
-        app.getContactHelper().fillContactForm(new ContactData("name1", "lastname1","adress1", "111-11-11", "222-22-22", "333-33-33", "1@mail.ru", "2@mail.ru", "3@mail.ru"));
+        app.getContactHelper().fillContactForm(new ContactData("name1", "lastname1","adress1", "111-11-11", "222-22-22", "333-33-33", "1@mail.ru", "2@mail.ru", "3@mail.ru", null), false);
         app.getContactHelper().submitContactCreation();
         app.getContactHelper().gotoGroupPage("home");
     }
