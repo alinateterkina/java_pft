@@ -58,5 +58,16 @@ public class ContactHelper extends HelperBase {
         WebElement editCell = wd.findElement(By.id("maintable")).findElements(By.tagName("tr")).get(1).findElements(By.tagName("td")).get(7).findElements(By.tagName("img")).get(0);
         editCell.click();
     }
+
+    public void createContact(ContactData contact, boolean b) {
+        gotoGroupPage("add new");
+        fillContactForm(contact, true);
+        submitContactCreation();
+        gotoGroupPage("home");
+    }
+
+    public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+    }
 }
 
