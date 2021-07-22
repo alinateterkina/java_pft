@@ -97,6 +97,7 @@ public class ContactData {
         return "ContactData{" +
                 "id='" + id + '\'' +
                 ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
 
