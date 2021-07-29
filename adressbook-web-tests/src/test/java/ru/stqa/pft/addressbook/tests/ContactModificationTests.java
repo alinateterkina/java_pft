@@ -10,17 +10,19 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-    @Test
 
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().homePage();
         if (app.contact().list().size() == 0){
-            app.contact().create(new ContactData().withFirstname("name1"), true);
+            app.contact().create(new ContactData()
+                    .withFirstname("test1").withLastname("test2").withAddress("test3").withHome("test4")
+                    .withMobile("test5").withWork("test6").withEmail("test7").withEmail2("test8")
+                    .withEmail3("test9").withGroup("test10"), true);
         }
     }
-
-    public void testContactModificationTests() throws Exception {
+@Test
+    public void testContactModificationTests()  {
 
         List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
