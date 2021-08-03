@@ -66,8 +66,9 @@ public class ContactHelper extends HelperBase {
         WebElement editCell = wd.findElement(By.id("maintable")).findElements(By.tagName("tr")).get(index + 1 ).findElements(By.tagName("td")).get(7).findElements(By.tagName("img")).get(0);
         editCell.click();
     }
+
     public void editContactById(int id) {
-        wd.findElement(By.cssSelector("input[edit php?id= ' + id + ']")).click();
+       wd.findElement(By.cssSelector("a[href$= 'edit.php?id=" + id + "']")).click();
     }
 
     public void create(ContactData contact, boolean b) {
