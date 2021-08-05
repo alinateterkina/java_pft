@@ -15,6 +15,7 @@ public class ContactData {
     private String email;
     private String email2;
     private String email3;
+    private String allEmails;
     private String group;
 
 
@@ -78,6 +79,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
     public ContactData withGroup(String group) {
         this.group = group;
         return this;
@@ -121,6 +127,8 @@ public class ContactData {
         return email3;
     }
 
+    public String getAllEmails() { return allEmails; }
+
     public String getGroup() {
         return group;
     }
@@ -148,4 +156,7 @@ public class ContactData {
     public int hashCode() {
         return Objects.hash(id, firstname, lastname);
     }
+
+
+
 }
