@@ -127,9 +127,7 @@ public class ContactHelper extends HelperBase {
 
 
     public Contacts all() {
-        if(contactCache != null){
-            return new Contacts(contactCache);
-        }
+        if(contactCache != null){ return new Contacts(contactCache); }
         WebElement maintable = wd.findElement(By.id("maintable"));
         ArrayList<WebElement> elements = new ArrayList<>(maintable.findElements(By.tagName("tr")));
         elements.remove(0);
@@ -137,8 +135,10 @@ public class ContactHelper extends HelperBase {
         for (WebElement element : elements) {
             String firstname = element.findElements(By.tagName("td")).get(2).getText();
             String lastname = element.findElements(By.tagName("td")).get(1).getText();
+            String[] phones = element.findElements(By.tagName("td")).get(5).getText().split("\n");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).
+                    withHome(phones[0]).withMobile(phones[1]).withWork(phones[2]));
         }
         return new Contacts(contactCache);
     }
@@ -157,7 +157,7 @@ public class ContactHelper extends HelperBase {
     }
 
     private void initContactModificationById(int id) {
-        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value = '%s']")));
+        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value = '%s']", id)));
         WebElement row = checkbox.findElement(By.xpath(".//..//.."));
         List<WebElement> cells = row.findElements(By.tagName("td"));
         cells.get(7).findElement(By.tagName("a")).click();
