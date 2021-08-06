@@ -135,10 +135,14 @@ public class ContactHelper extends HelperBase {
         for (WebElement element : elements) {
             String firstname = element.findElements(By.tagName("td")).get(2).getText();
             String lastname = element.findElements(By.tagName("td")).get(1).getText();
+            String address = element.findElements(By.tagName("td")).get(3).getText();
+            String Emails = element.findElements(By.tagName("td")).get(4).getText();
             String allPhones = element.findElements(By.tagName("td")).get(5).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).
-                    withAllPhones(allPhones));
+            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+                    .withAddress(address)
+                    .withAllEmails(allEmails)
+                    .withAllPhones(allPhones));
         }
         return new Contacts(contactCache);
     }
